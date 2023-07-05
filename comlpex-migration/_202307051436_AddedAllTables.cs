@@ -13,17 +13,20 @@ namespace comlpex_migration
         public override void Up()
         {
             Create.Table("Complexes")
+
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Name").AsString().NotNullable()
                 .WithColumn("UnitCount").AsInt32().NotNullable();
 
             Create.Table("Blocks")
+
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Name").AsString().NotNullable()
                 .WithColumn("ComplexId").AsInt32().NotNullable()
                 .ForeignKey("FK-Complexes-Blocks", "Complexes", "Id");
 
             Create.Table("Units")
+
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Name").AsString().NotNullable()
                 .WithColumn("BlockId").AsInt32().NotNullable()
